@@ -1,0 +1,45 @@
+ 
+ <div class="topic-list" style="width: 10%; height: 100%; background-color: black; right: 0px; top: 50px; position: fixed;">
+    <menu-item [text]="'토픽추가'" (click)="showTopic()"></menu-item>
+    <menu-item  *ngFor="let topic of topics" [text]="topic.topic_name" (click)="selectTopic(topic)" [removable]="true" (remove)="deleteTopic(topic)"></menu-item>
+ </div>
+
+ <!-- Terminal -->
+ <div>
+     {{selectedTopic.topic_name}}
+ </div>
+ <div class="terminal" style="width: 25%; position: absolute; left: -259px; top: 0;">
+    <div style="height: 82%; overflow: auto;">
+        <menu-item [text]="'멤버추가'" (click)="showFriend()"></menu-item>
+    </div>
+</div>
+ <div class="terminal">
+    <div style="height: 82%; overflow: auto;">
+        <div *ngFor="let idx of objectKeys(messageService.messages)">
+            <div style="color: white; width: 20%; border-bottom: 1px solid #ffff6b; padding: 10px;font-size: 20px;"> {{idx}} </div>
+            <div *ngFor="let item of messageService.messages[idx]">
+                <div *ngIf="item.type==='OPPOSITE'">
+                    <div style="width: 100%; min-height: 50px; max-height: 130px; margin-top: 15px; position: relative;">
+                        <pre style="width: 10%; border: 1px solid white; border-radius: 10px; margin: 5px; white-space: pre-wrap; overflow-wrap: break-word; max-height: 92px; overflow: overlay; margin-top: 15px;">
+                            {{item.message}}</pre>
+                        <div>
+                            <pre style=" position: absolute; left: 130px; bottom: -10px; font-size: 10px;">{{item.time|date: 'hh:mm'}}</pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div *ngIf="item.type==='MYSELF'" style="position: relative; width:100%; max-height:130px;">
+                    <div style="width: 100%; min-height: 50px; max-height: 130px; margin-top: 15px; float: right; position: relative;">
+                        <pre style="width: 10%; border: 1px solid white; border-radius: 10px; float: right; margin: 5px; white-space: pre-wrap; overflow-wrap: break-word; max-height: 92px; overflow: overlay; margin-top: 15px;">
+                            {{item.message}}</pre>
+                        <div>
+                            <pre style=" position: absolute; right: 130px; bottom: -10px; font-size: 10px;">{{item.time|date: 'HH:mm'}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <textarea #text style="width: 99.4%; position: absolute; bottom: 0; resize: none; height: 100px;" (keyup.enter)="submit($event)"></textarea>
+</div>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add topic</h1>
+<div mat-dialog-content [style]="{'min-width': '200px'}">
+  <p>토픽을 생성하세요.</p>
+  <mat-form-field>
+    <mat-label>토픽 이름</mat-label>
+    <input matInput type="text" [(ngModel)]="data.topic_name">
+  </mat-form-field>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>취소</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>생성</button>
+</mat-dialog-actions>

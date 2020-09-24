@@ -1,0 +1,10 @@
+<div #menuItem class="menu-item" >
+    <div style="position: relative;">
+        <div style="width: 85%; padding: 5px; font-size: 20px; text-align: left; margin-top: 10px;" [ngStyle]="setStyle()" (click)="route($event, url)">
+            <a style="margin-left: 10px; color: white; text-decoration: none; font-weight: bold;">{{text}}</a>
+        </div>
+        <div *ngIf="removable" style="color: white; position: absolute; right: 5%; top:26%;" (click)="onRemoveClick($event)">
+            Ｘ
+        </div>
+    </div>
+</div>

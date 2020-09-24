@@ -1,0 +1,8 @@
+<div class="side_menu" style=" z-index: 1; text-align: center;">
+    <!-- <div class="logo" (click)="route('/')" style="width: 85%; padding: 5px; font-size: 20px; text-align: center;">
+        　
+    </div> -->
+    <menu-item #menuItem [url]="'/'"            [text]="'메인화면'" (clickItem)="onClick($event)"></menu-item>
+    <menu-item #menuItem [url]="'/messenger'"   [text]="'메신저'"   (clickItem)="onClick($event)"></menu-item>
+    <menu-item #menuItem [url]="'/friend'"      [text]="'친구'"     (clickItem)="onClick($event)"></menu-item>
+</div>
